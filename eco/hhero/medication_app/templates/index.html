@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medication Search by Disease</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2rem;
+        }
+        form {
+            margin-bottom: 2rem;
+        }
+        .result {
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Search Medications by Disease</h1>
+    <form method="POST">
+        <label for="disease">Enter Disease:</label>
+        <input type="text" id="disease" name="disease" required>
+        <button type="submit">Search</button>
+    </form>
+
+    {% if medications %}
+        <h2>Results:</h2>
+        {% for med in medications %}
+            <div class="result">
+                <h3>Drug Name: {{ med.name }}</h3>
+                <p>Indications: {{ med.indications }}</p>
+            </div>
+            <hr>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>
